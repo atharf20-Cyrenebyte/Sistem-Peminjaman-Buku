@@ -108,18 +108,7 @@ curl -X POST http://localhost:5000/loans -H "Content-Type: application/json" -d 
 curl -X PUT http://localhost:5000/loans/1/return
 ```
 
----
 
-## Screenshot & Dokumentasi
-
-Sertakan screenshot dari Postman/Thunder Client yang menunjukkan:
-
-1. CRUD Books (POST, GET, PUT, DELETE)
-2. CRUD Members
-3. Pembuatan loan (stok berkurang)
-4. Pengembalian loan (stok bertambah)
-
----
 
 ## Catatan deployment / testing
 
