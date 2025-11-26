@@ -1,0 +1,36 @@
+DROP DATABASE IF EXISTS perpustakaan_db;
+CREATE DATABASE perpustakaan_db;
+USE perpustakaan_db;
+
+
+CREATE TABLE books (
+id INT AUTO_INCREMENT PRIMARY KEY,
+title VARCHAR(255) NOT NULL,
+author VARCHAR(255),
+publisher VARCHAR(255),
+year INT,
+stock INT NOT NULL DEFAULT 0,
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE members (
+id INT AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(255) NOT NULL,
+address TEXT,
+phone VARCHAR(50),
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE loans (
+id INT AUTO_INCREMENT PRIMARY KEY,
+member_id INT NOT NULL,
+book_id INT NOT NULL,
+loan_date DATE NOT NULL,
+return_date DATE DEFAULT NULL,
+status ENUM('borrowed','returned') NOT NULL DEFAULT 'borrowed',
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+CONSTRAINT fk_loans_member FOREIGN KEY (member_id) REFERENCES members(id) ON DELETE CASCADE,
+CONSTRAINT fk_loans_book FOREIGN KEY (book_id) REFERENCES books(id) ON DELETE CASCADE
+);
